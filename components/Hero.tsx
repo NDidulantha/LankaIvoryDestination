@@ -3,7 +3,7 @@
 import Image from 'next/image'
 
 const POSTER =
-    'https://images.unsplash.com/photo-1567189305263-127e41c4cdda?w=1600&h=1200&fit=crop&auto=format'
+    '/mirissa-beach.jpg'
 
 const MOBILE_HERO_IMAGE = '/mirissa-beach.jpg'
 

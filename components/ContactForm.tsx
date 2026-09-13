@@ -6,6 +6,8 @@ const INTERESTS = ['Cultural', 'Wildlife', 'Beaches', 'Hill Country', 'Honeymoon
 
 export default function ContactForm() {
     const [sent, setSent] = useState(false)
+    const [sending, setSending] = useState(false)
+    const [error, setError] = useState('')
     const [interests, setInterests] = useState<string[]>([])
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
@@ -23,10 +25,42 @@ export default function ContactForm() {
     }
     const endBeforeStart = startDate && endDate && nights === 0
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        // TODO: POST to Laravel enquiry endpoint later
-        setSent(true)
+        if (endBeforeStart || sending) return
+
+        const formData = new FormData(e.currentTarget)
+        const payload = {
+            name: String(formData.get('name') || ''),
+            email: String(formData.get('email') || ''),
+            phone: String(formData.get('phone') || ''),
+            country: String(formData.get('country') || ''),
+            arrival: startDate,
+            departure: endDate,
+            travellers: String(formData.get('travellers') || ''),
+            interests,
+            message: String(formData.get('message') || ''),
+            website: String(formData.get('website') || ''), // honeypot
+        }
+
+        setError('')
+        setSending(true)
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            })
+            const data = await res.json()
+            if (!res.ok || !data.ok) {
+                throw new Error(data.error || 'Something went wrong. Please try again.')
+            }
+            setSent(true)
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+        } finally {
+            setSending(false)
+        }
     }
 
     const field: React.CSSProperties = {
@@ -92,19 +126,19 @@ export default function ContactForm() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                     <label style={gridLabel}>Full name *</label>
-                    <input type="text" required placeholder="Your name" style={field} />
+                    <input type="text" name="name" required placeholder="Your name" style={field} />
                 </div>
                 <div>
                     <label style={gridLabel}>Email *</label>
-                    <input type="email" required placeholder="you@email.com" style={field} />
+                    <input type="email" name="email" required placeholder="you@email.com" style={field} />
                 </div>
                 <div>
                     <label style={gridLabel}>Phone / WhatsApp (optional)</label>
-                    <input type="tel" placeholder="+94 …" style={field} />
+                    <input type="tel" name="phone" placeholder="+94 …" style={field} />
                 </div>
                 <div>
                     <label style={gridLabel}>Country</label>
-                    <input type="text" placeholder="Where you’re travelling from" style={field} />
+                    <input type="text" name="country" placeholder="Where you’re travelling from" style={field} />
                 </div>
             </div>
 
@@ -165,7 +199,7 @@ export default function ContactForm() {
             {/* Number of travellers */}
             <div className="mt-6 sm:max-w-[200px]">
                 <label style={label}>Number of travellers</label>
-                <input type="number" min={1} placeholder="2" style={field} />
+                <input type="number" name="travellers" min={1} placeholder="2" style={field} />
             </div>
 
             {/* Interests */}
@@ -197,8 +231,18 @@ export default function ContactForm() {
             {/* Message */}
             <div className="mt-6">
                 <label style={label}>Tell us about your dream trip</label>
-                <textarea rows={4} placeholder="Anything you’d love to see, do, or avoid…" style={{ ...field, resize: 'vertical' }} />
+                <textarea name="message" rows={4} placeholder="Anything you’d love to see, do, or avoid…" style={{ ...field, resize: 'vertical' }} />
             </div>
+
+            {/* Honeypot — hidden from real visitors, catches basic bots */}
+            <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0 }}
+            />
 
             {/* Consent */}
             <label className="flex items-start gap-3 mt-6 cursor-pointer">
@@ -208,15 +252,24 @@ export default function ContactForm() {
         </span>
             </label>
 
+            {error && (
+                <p className="text-sm mt-4" style={{ color: '#B4513A' }}>
+                    {error}
+                </p>
+            )}
+
             <button
                 type="submit"
-                className="mt-7 w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 text-sm font-medium tracking-wider uppercase transition-all hover:brightness-110"
+                disabled={sending}
+                className="mt-7 w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 text-sm font-medium tracking-wider uppercase transition-all hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed"
                 style={{ backgroundColor: '#B8963A', color: '#F9F5EE', borderRadius: '25px', letterSpacing: '0.08em', fontSize: '0.75rem' }}
             >
-                Send Enquiry
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                {sending ? 'Sending…' : 'Send Enquiry'}
+                {!sending && (
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                )}
             </button>
         </form>
     )

@@ -58,6 +58,17 @@ body {
   background: transparent;
 }
 
+/* Date inputs with a custom empty-state placeholder (see ContactForm) supply
+   their own "dd/mm/yyyy" text — hide the browser's native placeholder digits
+   underneath so the two don't render on top of each other. Once a real value
+   is picked, .has-value restores normal text color to show it. */
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  color: transparent;
+}
+input[type="date"].has-value::-webkit-datetime-edit-fields-wrapper {
+  color: inherit;
+}
+
 .font-display {
   font-family: 'Playfair Display', serif;
 }

@@ -155,7 +155,7 @@ export default function ContactForm() {
                                 value={startDate}
                                 onChange={(e) => setStartDate(e.target.value)}
                                 style={dateField}
-                                className="min-w-0 w-full"
+                                className={'min-w-0 w-full' + (startDate ? ' has-value' : '')}
                             />
                             {!startDate && (
                                 <span
@@ -176,7 +176,7 @@ export default function ContactForm() {
                                 value={endDate}
                                 onChange={(e) => setEndDate(e.target.value)}
                                 style={dateField}
-                                className="min-w-0 w-full"
+                                className={'min-w-0 w-full' + (endDate ? ' has-value' : '')}
                             />
                             {!endDate && (
                                 <span

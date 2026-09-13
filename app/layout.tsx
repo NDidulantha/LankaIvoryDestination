@@ -47,9 +47,7 @@ export const metadata: Metadata = {
             "max-video-preview": -1,
         },
     },
-    icons: {
-        icon: "/favicon.ico",
-    },
+    // favicon.ico / icon.png / apple-icon.png in app/ are auto-detected by Next.js
 };
 
 const organizationJsonLd = {

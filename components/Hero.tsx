@@ -1,10 +1,11 @@
 'use client'
 
+import Image from 'next/image'
+
 const POSTER =
     'https://images.unsplash.com/photo-1567189305263-127e41c4cdda?w=1600&h=1200&fit=crop&auto=format'
 
-const MOBILE_HERO_IMAGE = '/Destinations/Sigiriya1.jpg'
-const MOBILE_HERO_VIDEO = '/videos/sigiriya-mobile-hero.mp4'
+const MOBILE_HERO_IMAGE = '/mirissa-beach.jpg'
 
 export default function Hero() {
     return (
@@ -22,19 +23,16 @@ export default function Hero() {
                 <source src="/videos/hero.mp4" type="video/mp4" />
             </video>
 
-            {/* Mobile: a short, heavily-compressed clip (~1.8MB) so it stays light on cellular data */}
-            <video
-                className="absolute inset-0 w-full h-full object-cover md:hidden"
-                autoPlay
-                muted
-                loop
-                playsInline
-                poster={MOBILE_HERO_IMAGE}
-                aria-label="Aerial view of Sigiriya rock fortress rising above the Sri Lankan jungle at dawn"
+            {/* Mobile: a still image only (no heavy video on phones) */}
+            <Image
+                src={MOBILE_HERO_IMAGE}
+                alt="Rocky shoreline and palm-covered headland at Mirissa Beach, Sri Lanka"
+                fill
+                preload
+                sizes="100vw"
+                className="object-cover md:hidden"
                 style={{ backgroundColor: '#243D24' }}
-            >
-                <source src={MOBILE_HERO_VIDEO} type="video/mp4" />
-            </video>
+            />
 
             {/* Gradient overlays (unchanged from the design) */}
             <div

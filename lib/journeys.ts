@@ -46,7 +46,7 @@ export const JOURNEYS: Journey[] = [
     },
     {
         title: 'Ceylon Honeymoon Grand', type: 'Romance', cat: 'Romance', duration: '12 Days', price: '$5,600',
-        route: 'Cultural Triangle · Ella · Yala · Tangalle', photo: 'infinity pool, southern coast', images: ['/tours/honeymoon-grand-1.jpg','/tours/honeymoon-grand-2.jpg','/tours/honeymoon-grand-3.jpg','/tours/honeymoon-grand-4.jpg'],
+        route: 'Cultural Triangle · Ella · Yala · Tangalle', photo: 'infinity pool, southern coast', images: ['/tours/honeymoon-grand-1.jpg','/tours/honeymoon-grand-2.jpg','/tours/honeymoon-grand-3.jpg'],
         desc: 'An intimate, softly-paced route with private dinners, spa afternoons and the island’s most romantic stays.',
         highlights: ['Candle-lit dinner among the ruins', 'Private tea-country picnic', 'Beachfront villa on the deep south'],
     },

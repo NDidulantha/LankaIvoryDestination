@@ -62,9 +62,10 @@ const organizationJsonLd = {
     telephone: "+94112345678",
     address: {
         "@type": "PostalAddress",
-        streetAddress: "42 Galle Face Terrace",
-        addressLocality: "Colombo",
-        addressRegion: "Colombo 03",
+        streetAddress: "No. 37/22 B, Atulugama Road, Pubudu Rotarigama",
+        addressLocality: "Bandaragama",
+        addressRegion: "Western Province",
+        postalCode: "12530",
         addressCountry: "LK",
     },
     areaServed: {

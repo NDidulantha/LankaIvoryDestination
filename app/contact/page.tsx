@@ -5,7 +5,7 @@ import { pageMetadata, breadcrumbJsonLd } from '@/lib/seo'
 export const metadata = pageMetadata({
     title: 'Contact',
     description:
-        'Get in touch with Lanka Ivory Destination. Call, email, WhatsApp or visit us in Colombo — a journey consultant replies within one working day.',
+        'Get in touch with Lanka Ivory Destination. Call, email, WhatsApp or visit us in Bandaragama — a journey consultant replies within one working day.',
     path: '/contact',
     image: '/About/About1.jpg',
 })
@@ -49,7 +49,7 @@ const CARDS = [
     },
     {
         label: 'Address',
-        lines: ['42 Galle Face Terrace', 'Colombo 03, Sri Lanka'],
+        lines: ['No. 37/22 B, Atulugama Road', 'Pubudu Rotarigama, Bandaragama 12530'],
         icon: (
             <>
                 <path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
@@ -67,7 +67,7 @@ export default function ContactPage() {
             <header className="relative pt-28 pb-12 md:pt-32 md:pb-20 text-center overflow-hidden" style={{ backgroundColor: '#243D24' }}>
                 <div
                     role="img"
-                    aria-label="Colonial-era building near Galle Face, Colombo"
+                    aria-label="Historic colonial-era building on the Sri Lankan coast"
                     className="absolute inset-0"
                     style={{
                         backgroundImage: 'url(/About/About1.jpg)',
@@ -178,7 +178,7 @@ export default function ContactPage() {
                             Find us
                         </p>
                         <h2 className="font-display text-2xl md:text-4xl" style={{ color: '#1A1712', fontWeight: 400 }}>
-                            Visit us in Colombo
+                            Visit us in Bandaragama
                         </h2>
                     </div>
                     <div
@@ -186,8 +186,8 @@ export default function ContactPage() {
                         style={{ borderRadius: '8px', border: '1px solid rgba(184,150,58,0.2)', height: 'clamp(260px,55vw,440px)' }}
                     >
                         <iframe
-                            title="Lanka Ivory Destination office location in Colombo"
-                            src="https://www.google.com/maps?q=Galle+Face+Green+Colombo+Sri+Lanka&output=embed"
+                            title="Lanka Ivory Destination office location in Bandaragama"
+                            src="https://www.google.com/maps?q=No.+37%2F22+B%2C+Atulugama+Road%2C+Pubudu+Rotarigama%2C+Bandaragama+12530%2C+Sri+Lanka&output=embed"
                             width="100%"
                             height="100%"
                             style={{ border: 0 }}

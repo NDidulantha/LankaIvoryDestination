@@ -6,7 +6,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import JsonLd from "@/components/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
-const DEFAULT_TITLE = "Lanka Ivory Destinations — Sri Lanka, travelled properly";
+const DEFAULT_TITLE = "Lanka Ivory Destination — Sri Lanka, travelled properly";
 const DEFAULT_DESCRIPTION =
     "Private, tailor-made journeys across Sri Lanka. Chauffeur-guides, hand-checked hotels, and itineraries built around how you want to travel.";
 const DEFAULT_IMAGE = "/Destinations/Sigiriya1.jpg";

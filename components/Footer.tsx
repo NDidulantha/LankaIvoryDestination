@@ -13,7 +13,7 @@ export default function Footer() {
                     {/* Brand */}
                     <div>
                         <div className="flex items-center gap-3 mb-5">
-                            <img src="/logo.png" alt="Lanka Ivory Destinations" className="h-20 w-auto" />
+                            <img src="/logo.png" alt="Lanka Ivory Destination" className="h-20 w-auto" />
                             <span className="flex flex-col leading-none">
                                 <span className="font-display text-2xl" style={{ color: '#1A1712', letterSpacing: '0.04em' }}>
                                     Lanka Ivory
@@ -22,7 +22,7 @@ export default function Footer() {
                                     className="text-[0.7rem] tracking-[0.3em] uppercase mt-1"
                                     style={{ color: '#B8963A' }}
                                 >
-                                    Destinations
+                                    Destination
                                 </span>
               </span>
                         </div>
@@ -101,7 +101,7 @@ export default function Footer() {
                     style={{ borderTop: '1px solid rgba(26,23,18,0.1)' }}
                 >
                     <p className="text-sm" style={{ color: 'rgba(26,23,18,0.45)' }}>
-                        © 2026 Lanka Ivory Destinations (Pvt) Ltd. All rights reserved.
+                        © 2026 Lanka Ivory Destination (Pvt) Ltd. All rights reserved.
                     </p>
                 </div>
             </div>

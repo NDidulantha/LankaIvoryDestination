@@ -5,7 +5,7 @@ import { pageMetadata, breadcrumbJsonLd } from '@/lib/seo'
 export const metadata = pageMetadata({
     title: 'Contact',
     description:
-        'Get in touch with Lanka Ivory Destinations. Call, email, WhatsApp or visit us in Colombo — a journey consultant replies within one working day.',
+        'Get in touch with Lanka Ivory Destination. Call, email, WhatsApp or visit us in Colombo — a journey consultant replies within one working day.',
     path: '/contact',
     image: '/About/About1.jpg',
 })
@@ -186,7 +186,7 @@ export default function ContactPage() {
                         style={{ borderRadius: '8px', border: '1px solid rgba(184,150,58,0.2)', height: 'clamp(260px,55vw,440px)' }}
                     >
                         <iframe
-                            title="Lanka Ivory Destinations office location in Colombo"
+                            title="Lanka Ivory Destination office location in Colombo"
                             src="https://www.google.com/maps?q=Galle+Face+Green+Colombo+Sri+Lanka&output=embed"
                             width="100%"
                             height="100%"

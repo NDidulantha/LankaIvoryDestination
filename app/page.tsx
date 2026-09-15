@@ -8,7 +8,7 @@ import Experiences from '@/components/Experiences'
 import Testimonials from '@/components/Testimonials'
 import Contact from '@/components/Contact'
 
-const HOME_TITLE = 'Lanka Ivory Destinations — Sri Lanka, travelled properly'
+const HOME_TITLE = 'Lanka Ivory Destination — Sri Lanka, travelled properly'
 const HOME_DESCRIPTION =
     'Private, tailor-made journeys across Sri Lanka. Chauffeur-guides, hand-checked hotels, and itineraries built around how you want to travel.'
 

@@ -4,7 +4,7 @@ import { pageMetadata, breadcrumbJsonLd } from '@/lib/seo'
 export const metadata = pageMetadata({
     title: 'About',
     description:
-        'The people behind your journey. Lanka Ivory Destinations is a Sri Lankan-owned tour operator crafting private, tailor-made journeys across the island since 2011.',
+        'The people behind your journey. Lanka Ivory Destination is a Sri Lankan-owned tour operator crafting private, tailor-made journeys across the island since 2011.',
     path: '/about',
     image: '/about-hero.jpg',
 })

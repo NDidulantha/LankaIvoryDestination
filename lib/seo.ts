@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 const FALLBACK_SITE_URL = 'https://lankaivorydestination.com'
 
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || FALLBACK_SITE_URL).replace(/\/$/, '')
-export const SITE_NAME = 'Lanka Ivory Destinations'
+export const SITE_NAME = 'Lanka Ivory Destination'
 
 /**
  * Builds a page's metadata. `title` should be the short, page-specific

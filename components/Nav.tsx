@@ -137,28 +137,28 @@ export default function Nav() {
             <div id="google_translate_element" style={{ display: 'none' }} />
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
                 {/* Logo (left) */}
-                <Link href="/" className="flex items-center gap-3" aria-label="Lanka Ivory Destinations home">
+                <Link href="/" className="flex items-center gap-3" aria-label="Lanka Ivory Destination home">
                     <Image
                         src="/logo.png"
-                        alt="Lanka Ivory Destinations"
+                        alt="Lanka Ivory Destination"
                         width={48}
                         height={48}
                         priority
-                        className="h-11 w-auto"
+                        className="h-14 w-auto md:h-11"
                         style={{ mixBlendMode: scrolled ? 'multiply' : 'normal' }}
                     />
                     <span className="flex flex-col leading-none">
             <span
-                className="font-display text-xl tracking-wide"
+                className="font-display text-2xl md:text-xl tracking-wide"
                 style={{ color: scrolled ? '#243D24' : '#F9F5EE', letterSpacing: '0.04em' }}
             >
               Lanka Ivory
             </span>
             <span
-                className="text-[0.6rem] tracking-[0.3em] uppercase mt-1"
+                className="text-[0.7rem] md:text-[0.6rem] tracking-[0.3em] uppercase mt-1"
                 style={{ color: scrolled ? '#B8963A' : '#D4AE5A' }}
             >
-              Destinations
+              Destination
             </span>
           </span>
                 </Link>

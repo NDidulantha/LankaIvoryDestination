@@ -5,7 +5,7 @@ import { pageMetadata, breadcrumbJsonLd } from '@/lib/seo'
 export const metadata = pageMetadata({
     title: 'Postcards Home',
     description:
-        'Notes our travellers sent from the island. Real stories from journeys across Sri Lanka with Lanka Ivory Destinations.',
+        'Notes our travellers sent from the island. Real stories from journeys across Sri Lanka with Lanka Ivory Destination.',
     path: '/experiences/postcards',
     image: '/postcards-hero.jpg',
 })

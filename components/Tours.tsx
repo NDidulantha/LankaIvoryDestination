@@ -4,7 +4,6 @@ import { JOURNEYS } from '@/lib/journeys'
 const TOURS = JOURNEYS.slice(0, 4).map(j => ({
     title: j.title,
     days: j.duration,
-    price: 'From ' + j.price,
     highlights: j.highlights,
     img: j.images[0],
     alt: j.title + ' — signature tour of Sri Lanka',
@@ -68,7 +67,7 @@ export default function Tours() {
                                     className="text-sm mb-5"
                                     style={{ color: '#B8963A', fontWeight: 500 }}
                                 >
-                                    {tour.price} <span style={{ color: '#8A8278', fontWeight: 300 }}>per person</span>
+                                    Price on request
                                 </p>
 
                                 <ul className="space-y-1.5 mb-6">
@@ -96,7 +95,7 @@ export default function Tours() {
                                         whiteSpace: 'nowrap',
                                     }}
                                 >
-                                    <span>Book Now</span>
+                                    <span>Enquire Now</span>
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0 }}>
                                         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>

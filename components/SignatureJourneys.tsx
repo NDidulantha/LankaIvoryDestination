@@ -3,7 +3,8 @@
 import { useState, useMemo, useEffect } from 'react'
 import { JOURNEYS } from '@/lib/journeys'
 
-const CATEGORIES = ['All', 'Cultural', 'Wildlife', 'Nature', 'Romance']
+const CATEGORIES = ['All', ...Array.from(new Set(JOURNEYS.map((j) => j.cat)))]
+const FEATURED = JOURNEYS.find((j) => j.slug === 'grand-sri-lanka-discovery-tour') ?? JOURNEYS[0]
 
 const PhotoBlock = ({ label, src, dark }: { label: string; src?: string; dark?: boolean }) => (
     <div
@@ -74,7 +75,7 @@ export default function SignatureJourneys() {
         const query = q.trim().toLowerCase()
         return JOURNEYS.filter((j) => {
             const okCat = cat === 'All' || j.cat === cat
-            const hay = (j.title + ' ' + j.route + ' ' + j.desc + ' ' + j.type + ' ' + j.highlights.join(' ')).toLowerCase()
+            const hay = (j.title + ' ' + j.route + ' ' + j.desc + ' ' + j.type + ' ' + j.themes.join(' ') + ' ' + j.destinations.join(' ') + ' ' + j.highlights.join(' ')).toLowerCase()
             return okCat && (!query || hay.includes(query))
         })
     }, [cat, q])
@@ -168,7 +169,7 @@ export default function SignatureJourneys() {
                                 <article key={j.title} className="sig-card flex flex-col"
                                          style={{ background: '#FFFFFF', border: '1px solid rgba(184,150,58,0.16)', borderRadius: '8px', overflow: 'hidden' }}>
                                     <div className="relative" style={{ height: 'clamp(190px,42vw,280px)', overflow: 'hidden' }}>
-                                        <CardCarousel images={j.images} label={'cover — ' + j.photo + ' ·'} />
+                                        <CardCarousel images={j.images} label={j.title} />
                                         <span style={{ position: 'absolute', top: '16px', left: '16px', background: 'rgba(184,150,58,0.92)', color: '#F9F5EE', borderRadius: '25px', padding: '5px 14px', fontSize: '0.62rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' }}>{j.type}</span>
                                         <span style={{ position: 'absolute', top: '16px', right: '16px', background: 'rgba(26,23,18,0.62)', color: '#F9F5EE', borderRadius: '25px', padding: '5px 14px', fontSize: '0.62rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', backdropFilter: 'blur(2px)' }}>{j.duration}</span>
                                     </div>
@@ -185,14 +186,11 @@ export default function SignatureJourneys() {
                                         </ul>
                                         <div style={{ marginTop: 'auto', display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '16px', paddingTop: '22px', borderTop: '1px solid rgba(184,150,58,0.16)' }}>
                                             <div>
-                                                <div style={{ fontSize: '0.64rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8A8278', marginBottom: '3px' }}>From</div>
-                                                <div style={{ fontFamily: "'Playfair Display',serif", fontSize: '1.4rem', color: '#B8963A', lineHeight: 1 }}>
-                                                    <span style={{ fontWeight: 600 }}>{j.price}</span>
-                                                    <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: '0.72rem', fontWeight: 300, color: '#8A8278', marginLeft: '6px' }}>/ person</span>
-                                                </div>
+                                                <div style={{ fontSize: '0.64rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8A8278', marginBottom: '3px' }}>Price</div>
+                                                <div style={{ fontFamily: "'Playfair Display',serif", fontSize: '1.25rem', fontStyle: 'italic', color: '#B8963A', lineHeight: 1 }}>On request</div>
                                             </div>
                                             <a href="/contact" style={{ background: '#B8963A', color: '#F9F5EE', border: 'none', borderRadius: '25px', padding: '12px 22px', fontFamily: "'DM Sans',sans-serif", fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '9px', whiteSpace: 'nowrap' }}>
-                                                Book Now <span style={{ fontSize: '0.95rem' }}>→</span>
+                                                Enquire Now <span style={{ fontSize: '0.95rem' }}>→</span>
                                             </a>
                                         </div>
                                     </div>
@@ -212,7 +210,7 @@ export default function SignatureJourneys() {
             <section style={{ background: '#EBF0E8', padding: 'clamp(56px,7vw,100px) clamp(24px,5vw,64px)' }}>
                 <div className="mx-auto grid items-center grid-cols-1 md:grid-cols-2" style={{ maxWidth: '1360px', gap: 'clamp(40px,6vw,80px)' }}>
                     <div className="relative" style={{ height: 'clamp(220px,38vw,480px)', borderRadius: '8px', overflow: 'hidden' }}>
-                        <div className="absolute inset-0" style={{ backgroundImage: 'url(/tours/featured-grand-ceylon.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#c9d4c3' }} />
+                        <div className="absolute inset-0" style={{ backgroundImage: 'url(' + FEATURED.images[0] + ')', backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#c9d4c3' }} />
                         <div className="absolute flex" style={{ bottom: '16px', left: 0, right: 0, gap: '7px', justifyContent: 'center' }}>
                             <span style={{ width: '24px', height: '3px', borderRadius: '2px', background: '#B8963A' }} />
                             <span style={{ width: '24px', height: '3px', borderRadius: '2px', background: 'rgba(184,150,58,0.28)' }} />
@@ -220,15 +218,15 @@ export default function SignatureJourneys() {
                         </div>
                     </div>
                     <div>
-                        <div style={{ fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#B8963A', fontWeight: 600, marginBottom: '18px' }}>The Flagship · 14 Days</div>
+                        <div style={{ fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#B8963A', fontWeight: 600, marginBottom: '18px' }}>The Flagship · {FEATURED.duration}</div>
                         <h2 style={{ fontFamily: "'Playfair Display',serif", fontWeight: 400, fontSize: 'clamp(1.6rem,3.4vw,3rem)', lineHeight: 1.12, color: '#1A1712', margin: '0 0 20px' }}>
-                            The Grand Ceylon, <span style={{ fontStyle: 'italic', color: '#B8963A' }}>end to end</span>
+                            The whole island, <span style={{ fontStyle: 'italic', color: '#B8963A' }}>end to end</span>
                         </h2>
                         <p style={{ fontWeight: 300, fontSize: '1.02rem', lineHeight: 1.9, color: '#5C4A2A', margin: '0 0 28px', maxWidth: '46ch' }}>
-                            Two weeks that hold the whole island — the Cultural Triangle, the highlands by rail, Yala’s leopards, and a slow finish along the southern coast. Our most requested route, and the one we’re proudest of.
+                            {FEATURED.title} — {FEATURED.desc}
                         </p>
                         <div className="flex flex-wrap" style={{ gap: '36px', marginBottom: '32px' }}>
-                            {[['6', 'Regions'], ['14', 'Nights'], ['$6,400', 'From / person']].map(([v, l]) => (
+                            {[[String(FEATURED.destinations.length - 2), 'Destinations'], [FEATURED.duration.match(/(\d+) Nights/)?.[1] ?? '', 'Nights'], ['On request', 'Price']].map(([v, l]) => (
                                 <div key={l}>
                                     <div style={{ fontFamily: "'Playfair Display',serif", fontSize: '2rem', color: '#B8963A', lineHeight: 1 }}>{v}</div>
                                     <div style={{ fontSize: '0.68rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#8A8278', marginTop: '5px' }}>{l}</div>
@@ -236,7 +234,7 @@ export default function SignatureJourneys() {
                             ))}
                         </div>
                         <a href="/contact" style={{ background: '#B8963A', color: '#F9F5EE', border: 'none', borderRadius: '25px', padding: '14px 30px', fontFamily: "'DM Sans',sans-serif", fontSize: '0.74rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
-                            Explore the route <span style={{ fontSize: '1rem' }}>→</span>
+                            Enquire about this tour <span style={{ fontSize: '1rem' }}>→</span>
                         </a>
                     </div>
                 </div>

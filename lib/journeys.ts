@@ -110,7 +110,7 @@ export const JOURNEYS: Journey[] = [
         themes: ['Yoga', 'Meditation', 'Ayurveda', 'Vegetarian Wellness', 'Tea Country', 'Beach Relaxation'],
         route: 'Kandy · Nuwara Eliya · Bentota',
         desc: 'Three nights in Kandy and three in Bentota — daily yoga and meditation, a personalised Ayurveda programme and 100% vegetarian cuisine, with sightseeing kept gentle.',
-        images: ['/tours/hill-country-1.jpg', '/tours/intro-tea.jpg', '/tours/hill-country-4.jpg', '/gallery/beach-2.jpg', '/gallery/people-1.jpg'],
+        images: ['/tours/yoga/yoga-1st.jpg', '/tours/yoga/beautiful-girl-doing-meditation.jpg', '/tours/yoga/lakeside-deck-meditation-lantern.jpg', '/tours/yoga/paddy-fields-young-rice.jpg'],
         highlights: ['Daily yoga, pranayama & meditation', 'Personalised Ayurveda programme in Bentota', 'Nuwara Eliya tea-country wellness day', '100% vegetarian wellness cuisine'],
         destinations: ['Airport', 'Kandy (3 nights)', 'Nuwara Eliya day excursion', 'Bentota (3 nights)', 'Airport'],
     },

@@ -1,6 +1,7 @@
 import { Resend } from 'resend'
+import { CONTACT } from '@/lib/contact'
 
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL || 'hello@lankaivorydestinations.com'
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL || CONTACT.email
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || 'Lanka Ivory Destination <onboarding@resend.dev>'
 
 type EnquiryPayload = {

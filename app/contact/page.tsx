@@ -1,6 +1,7 @@
 import ContactForm from '@/components/ContactForm'
 import JsonLd from '@/components/JsonLd'
 import { pageMetadata, breadcrumbJsonLd } from '@/lib/seo'
+import { CONTACT } from '@/lib/contact'
 
 export const metadata = pageMetadata({
     title: 'Contact',
@@ -18,7 +19,8 @@ const breadcrumb = breadcrumbJsonLd([
 const CARDS = [
     {
         label: 'Phone',
-        lines: ['+94 11 234 5678', '+94 76 123 4567'],
+        lines: [CONTACT.phone, 'Direct calls'],
+        href: CONTACT.phoneHref,
         icon: (
             <path
                 d="M6 4h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4 6a2 2 0 0 1 2-2z"
@@ -28,7 +30,8 @@ const CARDS = [
     },
     {
         label: 'Email',
-        lines: ['hello@lankaivorydestinations.com'],
+        lines: [CONTACT.email, 'Bookings & enquiries'],
+        href: 'mailto:' + CONTACT.email,
         icon: (
             <>
                 <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.4" />
@@ -38,8 +41,8 @@ const CARDS = [
     },
     {
         label: 'WhatsApp',
-        lines: ['+94 76 123 4567', 'Fastest way to reach us'],
-        href: 'https://wa.me/94761234567',
+        lines: [CONTACT.whatsapp, 'Fastest way to reach us'],
+        href: CONTACT.whatsappHref,
         icon: (
             <path
                 d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3zm4.3 12.4c-.2.5-1.1 1-1.5 1-.4.1-.9.1-1.4-.1-.3-.1-.8-.3-1.4-.5a10 10 0 0 1-3.8-3.4c-.3-.4-.6-1-.6-1.6 0-.5.3-.8.4-1 .2-.2.4-.2.5-.2h.4c.1 0 .3 0 .5.4l.6 1.4c0 .1.1.3 0 .4l-.3.4-.2.2c-.1.1-.2.2-.1.4a6 6 0 0 0 2.7 2.4c.2.1.4.1.5 0l.5-.6c.1-.2.3-.1.4-.1l1.4.7c.2.1.3.1.3.2.1.1.1.4 0 .6z"
@@ -115,7 +118,7 @@ export default function ContactPage() {
                             return (
                                 <Tag
                                     key={c.label}
-                                    {...(c.href ? { href: c.href, target: '_blank', rel: 'noopener noreferrer' } : {})}
+                                    {...(c.href ? { href: c.href, ...(c.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {}) } : {})}
                                     className="contact-card group text-center px-4 py-6 md:px-6 md:py-9 transition-all duration-300"
                                     style={{
                                         backgroundColor: '#FFFFFF',

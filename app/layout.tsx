@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import JsonLd from "@/components/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
+import { CONTACT } from "@/lib/contact";
 
 const DEFAULT_TITLE = "Lanka Ivory Destination — Sri Lanka, travelled properly";
 const DEFAULT_DESCRIPTION =
@@ -58,8 +59,8 @@ const organizationJsonLd = {
     logo: `${SITE_URL}/logo.png`,
     image: `${SITE_URL}${DEFAULT_IMAGE}`,
     description: DEFAULT_DESCRIPTION,
-    email: "hello@lankaivorydestinations.com",
-    telephone: "+94112345678",
+    email: CONTACT.email,
+    telephone: CONTACT.phoneHref.replace("tel:", ""),
     address: {
         "@type": "PostalAddress",
         streetAddress: "No. 37/22 B, Atulugama Road, Pubudu Rotarigama",

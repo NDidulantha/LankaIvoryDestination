@@ -1,3 +1,5 @@
+import { CONTACT } from '@/lib/contact'
+
 const QUICK_LINKS = [
     { label: 'Home', href: '/' },
     { label: 'Signature Tours', href: '/tours/signature-journeys' },
@@ -65,31 +67,31 @@ export default function Footer() {
                         <ul className="space-y-3">
                             <li>
                                 <a
-                                    href="tel:+94112345678"
+                                    href={CONTACT.phoneHref}
                                     className="text-sm transition-colors hover:opacity-70"
                                     style={{ color: 'rgba(26,23,18,0.6)', fontWeight: 300 }}
                                 >
-                                    +94 11 234 5678
+                                    {CONTACT.phone}
                                 </a>
                             </li>
                             <li>
                                 <a
-                                    href="https://wa.me/94761234567"
+                                    href={CONTACT.whatsappHref}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-sm transition-colors hover:opacity-70"
                                     style={{ color: 'rgba(26,23,18,0.6)', fontWeight: 300 }}
                                 >
-                                    WhatsApp: +94 76 123 4567
+                                    WhatsApp: {CONTACT.whatsapp}
                                 </a>
                             </li>
                             <li>
                                 <a
-                                    href="mailto:hello@lankaivorydestinations.com"
+                                    href={'mailto:' + CONTACT.email}
                                     className="text-sm transition-colors hover:opacity-70"
                                     style={{ color: 'rgba(26,23,18,0.6)', fontWeight: 300 }}
                                 >
-                                    hello@lankaivorydestinations.com
+                                    {CONTACT.email}
                                 </a>
                             </li>
                         </ul>

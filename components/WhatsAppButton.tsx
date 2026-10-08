@@ -1,7 +1,9 @@
+import { CONTACT } from '@/lib/contact'
+
 export default function WhatsAppButton() {
     return (
         <a
-            href="https://wa.me/94761234567"
+            href={CONTACT.whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat with us on WhatsApp"

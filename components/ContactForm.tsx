@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { CONTACT } from '@/lib/contact'
 
 const INTERESTS = ['Cultural', 'Wildlife', 'Beaches', 'Hill Country', 'Honeymoon', 'Adventure']
 
@@ -115,7 +116,7 @@ export default function ContactForm() {
                 </h3>
                 <p style={{ color: '#5C4A2A', maxWidth: '34ch', fontWeight: 300 }}>
                     A journey consultant will be in touch within one working day. For anything urgent,
-                    WhatsApp us on +94 76 123 4567.
+                    WhatsApp us on <a href={CONTACT.whatsappHref} target="_blank" rel="noopener noreferrer" style={{ color: '#B8963A' }}>{CONTACT.whatsapp}</a>.
                 </p>
             </div>
         )

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { CONTACT } from '@/lib/contact'
 
 export default function Contact() {
     const [email, setEmail] = useState('')
@@ -88,7 +89,7 @@ export default function Contact() {
                 )}
 
                 <p className="text-xs" style={{ color: 'rgba(249,245,238,0.35)' }}>
-                    Or call us: +94 11 234 5678 · hello@lankaivorytravels.com
+                    Or call us: <a href={CONTACT.phoneHref} style={{ color: 'inherit' }}>{CONTACT.phone}</a> · <a href={'mailto:' + CONTACT.email} style={{ color: 'inherit' }}>{CONTACT.email}</a>
                 </p>
             </div>
         </section>

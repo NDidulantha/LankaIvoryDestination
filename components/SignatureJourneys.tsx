@@ -3,7 +3,14 @@
 import { useState, useMemo, useEffect } from 'react'
 import { JOURNEYS } from '@/lib/journeys'
 
+// '7 Days / 6 Nights' → 7
+const daysOf = (duration: string) => parseInt(duration, 10)
+const dayLabel = (duration: string) => daysOf(duration) + ' Days'
+
+// shortest tour first; tours of equal length keep their original order
+const SORTED = [...JOURNEYS].sort((a, b) => daysOf(a.duration) - daysOf(b.duration))
 const CATEGORIES = ['All', ...Array.from(new Set(JOURNEYS.map((j) => j.cat)))]
+const DAY_FILTERS = ['All', ...Array.from(new Set(SORTED.map((j) => dayLabel(j.duration))))]
 const FEATURED = JOURNEYS.find((j) => j.slug === 'grand-sri-lanka-discovery-tour') ?? JOURNEYS[0]
 
 const PhotoBlock = ({ label, src, dark }: { label: string; src?: string; dark?: boolean }) => (
@@ -24,6 +31,30 @@ const PhotoBlock = ({ label, src, dark }: { label: string; src?: string; dark?: 
         )}
     </div>
 )
+
+function FilterRow({ title, options, value, onChange }: { title: string; options: string[]; value: string; onChange: (v: string) => void }) {
+    return (
+        <div role="group" aria-label={title}>
+            <div style={{ fontSize: '0.64rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#8A8278', fontWeight: 600, marginBottom: '10px' }}>{title}</div>
+            <div className="flex flex-wrap" style={{ gap: '12px' }}>
+                {options.map((label) => {
+                    const active = label === value
+                    return (
+                        <button key={label} onClick={() => onChange(label)} aria-pressed={active}
+                                style={{
+                                    borderRadius: '25px', padding: '9px 20px', fontFamily: "'DM Sans',sans-serif", fontSize: '0.72rem', fontWeight: 600,
+                                    letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', transition: 'all .2s',
+                                    background: active ? '#B8963A' : 'transparent', color: active ? '#F9F5EE' : '#5C4A2A',
+                                    border: '1px solid ' + (active ? '#B8963A' : 'rgba(184,150,58,0.4)'),
+                                }}>
+                            {label}
+                        </button>
+                    )
+                })}
+            </div>
+        </div>
+    )
+}
 
 /* auto-rotating cover carousel — one frame per route stop */
 function CardCarousel({ images, label }: { images: string[]; label: string }) {
@@ -69,16 +100,18 @@ function CardCarousel({ images, label }: { images: string[]; label: string }) {
 
 export default function SignatureJourneys() {
     const [cat, setCat] = useState('All')
+    const [days, setDays] = useState('All')
     const [q, setQ] = useState('')
 
     const filtered = useMemo(() => {
         const query = q.trim().toLowerCase()
-        return JOURNEYS.filter((j) => {
+        return SORTED.filter((j) => {
             const okCat = cat === 'All' || j.cat === cat
+            const okDays = days === 'All' || dayLabel(j.duration) === days
             const hay = (j.title + ' ' + j.route + ' ' + j.desc + ' ' + j.type + ' ' + j.themes.join(' ') + ' ' + j.destinations.join(' ') + ' ' + j.highlights.join(' ')).toLowerCase()
-            return okCat && (!query || hay.includes(query))
+            return okCat && okDays && (!query || hay.includes(query))
         })
-    }, [cat, q])
+    }, [cat, days, q])
 
     return (
         <main style={{ background: '#F9F5EE', color: '#5C4A2A' }}>
@@ -141,21 +174,9 @@ export default function SignatureJourneys() {
                                    style={{ border: 'none', outline: 'none', background: 'transparent', fontFamily: "'DM Sans',sans-serif", fontSize: '0.85rem', color: '#1A1712', width: '100%' }} />
                         </div>
                     </div>
-                    <div className="flex flex-wrap" style={{ gap: '12px' }}>
-                        {CATEGORIES.map((label) => {
-                            const active = label === cat
-                            return (
-                                <button key={label} onClick={() => setCat(label)}
-                                        style={{
-                                            borderRadius: '25px', padding: '9px 20px', fontFamily: "'DM Sans',sans-serif", fontSize: '0.72rem', fontWeight: 600,
-                                            letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer', transition: 'all .2s',
-                                            background: active ? '#B8963A' : 'transparent', color: active ? '#F9F5EE' : '#5C4A2A',
-                                            border: '1px solid ' + (active ? '#B8963A' : 'rgba(184,150,58,0.4)'),
-                                        }}>
-                                    {label}
-                                </button>
-                            )
-                        })}
+                    <div className="flex flex-col" style={{ gap: '22px' }}>
+                        <FilterRow title="Tour style" options={CATEGORIES} value={cat} onChange={setCat} />
+                        <FilterRow title="Duration" options={DAY_FILTERS} value={days} onChange={setDays} />
                     </div>
                 </div>
             </section>

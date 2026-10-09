@@ -1,8 +1,29 @@
 import { Resend } from 'resend'
 import { CONTACT } from '@/lib/contact'
 
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL || CONTACT.email
-const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || 'Lanka Ivory Destination <onboarding@resend.dev>'
+/**
+ * Reads an email-address env var, forgiving common paste mistakes in the
+ * Vercel dashboard: surrounding whitespace or quotes, and the variable name
+ * itself pasted into the value box ("CONTACT_TO_EMAIL=..."). Falls back if the
+ * cleaned value is empty or doesn't contain an address, so a bad setting can't
+ * break the contact form (Resend rejects malformed "to"/"from" with a 422).
+ */
+function emailFromEnv(name: string, fallback: string) {
+    const cleaned = (process.env[name] ?? '')
+        .trim()
+        .replace(new RegExp('^' + name + '\\s*=\\s*'), '')
+        .replace(/^(["'])(.*)\1$/, '$2')
+        .trim()
+    if (!cleaned) return fallback
+    if (!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$|<[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+>$/.test(cleaned)) {
+        console.error(`${name} is not a valid email address — using the default instead`)
+        return fallback
+    }
+    return cleaned
+}
+
+const TO_EMAIL = emailFromEnv('CONTACT_TO_EMAIL', CONTACT.email)
+const FROM_EMAIL = emailFromEnv('CONTACT_FROM_EMAIL', 'Lanka Ivory Destination <onboarding@resend.dev>')
 
 type EnquiryPayload = {
     name: string

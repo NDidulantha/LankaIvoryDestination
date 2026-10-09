@@ -3,11 +3,14 @@
 import { useEffect } from 'react'
 import { GoogleAnalytics, sendGAEvent } from '@next/third-parties/google'
 
-/* Google Analytics 4 — only loads when NEXT_PUBLIC_GA_ID (e.g. "G-XXXXXXXXXX")
-   is set in the Vercel environment, so local dev and previews without it stay
-   untracked. Page views (including client-side navigation) are recorded by
-   GA4's enhanced measurement; this component adds the enquiry-intent clicks. */
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID?.trim()
+/* Google Analytics 4 for lankaivorydestination.com. The Measurement ID is
+   public (it ships in every page's HTML), so it lives here; NEXT_PUBLIC_GA_ID
+   can override it. Production builds only, so `next dev` doesn't log visits.
+   Page views (including client-side navigation) are recorded by GA4's enhanced
+   measurement; this component adds the enquiry-intent clicks. */
+const GA_ID = process.env.NODE_ENV === 'production'
+    ? (process.env.NEXT_PUBLIC_GA_ID?.trim() || 'G-VZD7M0B2QW')
+    : undefined
 
 /** Sends a GA4 event; a no-op when Analytics isn't configured. */
 export function trackEvent(name: string, params: Record<string, string> = {}) {

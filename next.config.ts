@@ -11,11 +11,13 @@ const nextConfig: NextConfig = {
       // The site was first live (and indexed by Google) on the free Vercel
       // address. Permanently send it to the real domain so search results
       // move across. Per-deployment preview URLs have other hostnames and
-      // are unaffected.
+      // are unaffected. Google Search Console verification files
+      // (public/google<hex>.html) are exempt, so the old address can be
+      // verified for the Removals and Change of Address tools.
       {
-        source: '/:path*',
+        source: '/:path((?!google[0-9a-f]+\\.html$).*)',
         has: [{ type: 'host', value: 'lankaivorydestination.vercel.app' }],
-        destination: 'https://lankaivorydestination.com/:path*',
+        destination: 'https://lankaivorydestination.com/:path',
         permanent: true,
       },
       // The Destinations page was removed in favour of the tour listing; send

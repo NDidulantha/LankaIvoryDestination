@@ -5,7 +5,6 @@ const ROUTES: { path: string; changeFrequency: MetadataRoute.Sitemap[number]['ch
     { path: '/', changeFrequency: 'weekly', priority: 1 },
     { path: '/about', changeFrequency: 'monthly', priority: 0.7 },
     { path: '/contact', changeFrequency: 'monthly', priority: 0.7 },
-    { path: '/discover-sri-lanka/destinations', changeFrequency: 'monthly', priority: 0.8 },
     { path: '/discover-sri-lanka/events', changeFrequency: 'monthly', priority: 0.6 },
     { path: '/experiences/blog', changeFrequency: 'weekly', priority: 0.6 },
     { path: '/experiences/gallery', changeFrequency: 'monthly', priority: 0.6 },

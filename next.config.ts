@@ -18,9 +18,14 @@ const nextConfig: NextConfig = {
         destination: 'https://lankaivorydestination.com/:path*',
         permanent: true,
       },
-      // Old path from before the site restructure, still in Google's index —
-      // send it to the tour listing. Exact match only, so /destinations/*.jpg
-      // image paths are not redirected.
+      // The Destinations page was removed in favour of the tour listing; send
+      // its current and pre-restructure paths there. Exact matches only, so
+      // /destinations/*.jpg image paths are not redirected.
+      {
+        source: '/discover-sri-lanka/destinations',
+        destination: '/tours/signature-journeys',
+        permanent: true,
+      },
       {
         source: '/destinations',
         destination: '/tours/signature-journeys',

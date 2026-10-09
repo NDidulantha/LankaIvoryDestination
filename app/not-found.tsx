@@ -29,11 +29,11 @@ export default function NotFound() {
                     Back to Home
                 </Link>
                 <Link
-                    href="/discover-sri-lanka/destinations"
+                    href="/tours/signature-journeys"
                     className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-medium tracking-wider uppercase transition-all"
                     style={{ border: '1px solid rgba(36,61,36,0.35)', color: '#243D24', borderRadius: '25px', letterSpacing: '0.08em', fontSize: '0.75rem' }}
                 >
-                    Explore Destinations
+                    Explore Our Tours
                 </Link>
                 <Link
                     href="/contact"

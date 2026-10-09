@@ -17,7 +17,6 @@ const NAV_ITEMS: NavItem[] = [
     /*{
         label: 'Discover Sri Lanka',
         children: [
-            { label: 'Destinations', href: '/discover-sri-lanka/destinations' },
             { label: 'Ceylon Calendar', href: '/discover-sri-lanka/events' },
         ],
     },*/

@@ -3,6 +3,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import Analytics from "@/components/Analytics";
 import JsonLd from "@/components/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 import { CONTACT } from "@/lib/contact";
@@ -94,6 +95,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <WhatsAppButton />
+        <Analytics />
         </body>
         </html>
     );

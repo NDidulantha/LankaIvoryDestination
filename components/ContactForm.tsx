@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { CONTACT } from '@/lib/contact'
+import { trackEvent } from '@/components/Analytics'
 
 const INTERESTS = ['Cultural', 'Wildlife', 'Beaches', 'Hill Country', 'Honeymoon', 'Adventure']
 
@@ -57,6 +58,7 @@ export default function ContactForm() {
                 throw new Error(data.error || 'Something went wrong. Please try again.')
             }
             setSent(true)
+            trackEvent('generate_lead', { form: 'contact', page: window.location.pathname })
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
         } finally {

@@ -44,26 +44,26 @@ export default function About() {
                             className="font-display text-3xl md:text-5xl mb-8"
                             style={{ color: '#1A1712', fontWeight: 400, lineHeight: 1.2 }}
                         >
-                            Slow travel,<br />
-                            <em style={{ fontStyle: 'italic' }}>deep connection</em>
+                            Every client,<br />
+                            <em style={{ fontStyle: 'italic' }}>an individual</em>
                         </h2>
                         <div
                             className="text-sm md:text-base leading-relaxed mb-6 md:mb-8 space-y-3 md:space-y-4"
                             style={{ color: '#5C4A2A', fontWeight: 300 }}
                         >
                             <p>
-                                Lanka Ivory was founded in 2011 by a pair of conservation biologists and a former
-                                Colombo hotel director who shared one conviction: that the best way to see Sri Lanka
-                                is slowly, with guides who love it.
+                                Warm greetings from Lanka Ivory Destinations, your trusted travel partner based in
+                                Colombo.
                             </p>
                             <p>
-                                We build itineraries around what most tours skip — a dawn with elephant mahouts,
-                                lunch in a family-run rice mill, a private audience with a temple guardian who has
-                                kept the flame lit for forty years.
+                                Our success stems from a simple core philosophy: we value every client as an
+                                individual. We take the time to understand your vision of a dream holiday—what you
+                                love to experience, your preferred accommodations, and how you wish to journey across
+                                the island.
                             </p>
                             <p>
-                                Every partner lodge, every guide, every meal is chosen by someone who has been there
-                                personally — and returned.
+                                From tailor-made tour packages for any budget to simply serving as your reliable
+                                booking agent, we&apos;re with you every step of the way.
                             </p>
                         </div>
 

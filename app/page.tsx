@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Hero from '@/components/Hero'
-import Stats from '@/components/Stats'
 import Destinations from '@/components/Destinations'
 import About from '@/components/About'
 import Tours from '@/components/Tours'
@@ -34,7 +33,6 @@ export default function Home() {
     return (
         <main className="min-h-screen bg-ivory">
             <Hero />
-            <Stats />
             <Destinations />
             <About />
             <Tours />

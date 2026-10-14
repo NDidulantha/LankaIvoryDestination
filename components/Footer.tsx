@@ -29,7 +29,7 @@ export default function Footer() {
               </span>
                         </div>
                         <p className="text-sm leading-relaxed" style={{ color: 'rgba(26,23,18,0.55)', fontWeight: 300 }}>
-                            Privately guided journeys through Sri Lanka since 2011.
+                            Tailor-made journeys through Sri Lanka, from Colombo.
                         </p>
                     </div>
 

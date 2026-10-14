@@ -4,7 +4,7 @@ import { pageMetadata, breadcrumbJsonLd } from '@/lib/seo'
 export const metadata = pageMetadata({
     title: 'About',
     description:
-        'The people behind your journey. Lanka Ivory Destination is a Sri Lankan-owned tour operator crafting private, tailor-made journeys across the island since 2011.',
+        'Lanka Ivory Destinations is your trusted travel partner based in Colombo, creating tailor-made Sri Lanka tour packages to fit any budget, travel style or preference.',
     path: '/about',
     image: '/about-hero.jpg',
 })
@@ -14,41 +14,47 @@ const breadcrumb = breadcrumbJsonLd([
     { name: 'About', path: '/about' },
 ])
 
-const VALUES = [
+const REASONS = [
     {
-        title: 'Local at heart',
-        text: 'Every guide, driver and consultant is Sri Lankan. This is their home, not a posting.',
+        title: 'Tailor-Made Tour Packages',
+        text: 'Customized itineraries designed to fit any budget, travel style, or preference.',
         icon: (
             <>
-                <path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
-                <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.4" />
+                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.4" />
+                <path d="M15.5 8.5l-2 5-5 2 2-5z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
             </>
         ),
     },
     {
-        title: 'Honest counsel',
-        text: "We'll tell you when a hotel isn't worth the money, or a season isn't right. That's the whole job.",
+        title: 'Complete Flexibility',
+        text: 'Full travel planning from start to finish, or simply serving as your reliable booking agent if you prefer a self-guided approach.',
         icon: (
-            <path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9 2.6.9-5.5-4-3.9 5.5-.8z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+            <path d="M4 8h13l-3-3M20 16H7l3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
         ),
     },
     {
-        title: 'Travel that gives back',
-        text: 'We work with conservation projects and community enterprises across the island.',
+        title: 'Unmatched Service',
+        text: 'Dedicated customer care with prompt, responsive, and friendly communication every step of the way.',
         icon: (
-            <path d="M4 12a8 8 0 0 1 16 0M4 12a8 8 0 0 0 16 0M12 4v16" stroke="currentColor" strokeWidth="1.4" />
+            <path d="M4 5h16v11H9l-5 4z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
         ),
     },
 ]
 
-const STATS = [
-    { value: '14+', label: 'Years Crafting Journeys' },
-    { value: '4,200+', label: 'Travellers Guided' },
-    { value: '97%', label: 'Would Return' },
-    { value: '38', label: 'Countries Home To' },
+const REGIONS = [
+    {
+        title: 'The Cultural Triangle (Rajarata)',
+        text: "Journey through the Ancient Land of Kings, home to massive ancient reservoirs and soaring white dagobas that showcase the glory of Sri Lanka's heritage.",
+    },
+    {
+        title: 'The Central Highlands',
+        text: 'Discover mist-draped mountains, sprawling green tea plantations, cascading waterfalls, and terraced paddy fields in a landscape that feels like paradise.',
+    },
+    {
+        title: 'Coastal & Wildlife Escapes',
+        text: 'Unwind along sun-kissed beaches, witness vibrant coastal fishing communities, and experience world-class safari adventures in iconic national parks across the South and Northwest.',
+    },
 ]
-
-const BADGES = ['SLTDA Licensed · [ No. ]', 'Company Reg. [ No. ]', 'Secure Payments', '4.9★ on Google']
 
 export default function AboutPage() {
     return (
@@ -79,10 +85,10 @@ export default function AboutPage() {
                         Home &nbsp;/&nbsp; About
                     </p>
                     <h1 className="font-display text-5xl md:text-7xl" style={{ color: '#F9F5EE', fontWeight: 400, maxWidth: '16ch' }}>
-                        Sri Lanka, the way we know it
+                        About Us
                     </h1>
                     <p className="mt-3 text-2xl md:text-3xl" style={{ fontFamily: "'Caveat', cursive", color: '#D4AE5A' }}>
-                        the people behind your journey
+                        your trusted travel partner in Sri Lanka
                     </p>
                 </div>
             </header>
@@ -91,22 +97,27 @@ export default function AboutPage() {
             <section className="py-20 md:py-24 text-center">
                 <div className="max-w-3xl mx-auto px-6">
                     <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#B8963A', letterSpacing: '0.22em' }}>
-                        Our Story
+                        Warm greetings
                     </p>
                     <p
                         className="font-display italic mt-6"
                         style={{ color: '#B8963A', fontSize: 'clamp(1.6rem, 3.2vw, 2.3rem)', lineHeight: 1.35 }}
                     >
-                        “We built the company we wished existed when we first fell in love with this island — one run
-                        by people who actually live here.”
+                        Warm greetings from Lanka Ivory Destinations, your trusted travel partner based in Colombo—the
+                        last royal capital of Sri Lanka.
+                    </p>
+                    <p className="mt-8" style={{ color: '#5C4A2A' }}>
+                        Sri Lanka is an extraordinary island where golden sunlit beaches, mist-shrouded mountains, lush
+                        wildlife sanctuaries, cascading waterfalls, and thousands of years of rich cultural heritage
+                        converge. Truly a destination like no other, it offers an immersive experience to anticipate,
+                        explore, and cherish forever.
                     </p>
                 </div>
             </section>
 
-            {/* ===== STORY ROWS ===== */}
+            {/* ===== WHY CHOOSE US ===== */}
             <section className="pb-8">
                 <div className="max-w-6xl mx-auto px-6">
-                    {/* Row 1 */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center mb-20">
                         <div
                             className="rounded-md overflow-hidden"
@@ -120,28 +131,64 @@ export default function AboutPage() {
                         />
                         <div>
                             <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#B8963A', letterSpacing: '0.14em' }}>
-                                2011 · How it began
+                                Our philosophy
                             </p>
                             <h2 className="font-display mt-3 mb-5" style={{ color: '#1A1712', fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', fontWeight: 400 }}>
-                                Founded by people who never left
+                                Why Choose Lanka Ivory Destinations?
                             </h2>
                             <p className="mb-4" style={{ color: '#5C4A2A' }}>
-                                Lanka Ivory began in 2011, when two conservation biologists and a former Colombo hotel director
-                                shared one conviction: that the best way to see Sri Lanka is slowly, with guides who love it.
+                                At Lanka Ivory Destinations, our success stems from a simple core philosophy: we value every
+                                client as an individual.
                             </p>
                             <p style={{ color: '#5C4A2A' }}>
-                                What started as a handful of tailor-made trips for friends has grown into hundreds of journeys a
-                                year — but the conviction hasn&apos;t changed at all.
+                                We take the time to understand your vision of a dream holiday—what you love to experience,
+                                your preferred accommodations, and how you wish to journey across the island.
                             </p>
                         </div>
                     </div>
+                </div>
+            </section>
 
-                    {/* Row 2 (flipped) */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center mb-20">
+            {/* ===== WHAT WE OFFER ===== */}
+            <section className="py-20 md:py-24" style={{ backgroundColor: '#243D24' }}>
+                <div className="max-w-6xl mx-auto px-6">
+                    <div className="text-center mb-14">
+                        <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#D4AE5A', letterSpacing: '0.2em' }}>
+                            What we offer
+                        </p>
+                        <h2 className="font-display mt-4" style={{ color: '#F9F5EE', fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', fontWeight: 400 }}>
+                            Your holiday, your way
+                        </h2>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {REASONS.map((r) => (
+                            <div
+                                key={r.title}
+                                className="text-center p-9"
+                                style={{ border: '1px solid rgba(212,174,90,0.25)', borderRadius: '8px' }}
+                            >
+                                <div
+                                    className="mx-auto mb-6 flex items-center justify-center"
+                                    style={{ width: '56px', height: '56px', borderRadius: '50%', backgroundColor: 'rgba(212,174,90,0.15)', color: '#D4AE5A' }}
+                                >
+                                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">{r.icon}</svg>
+                                </div>
+                                <h3 className="font-display text-2xl mb-3" style={{ color: '#F9F5EE' }}>{r.title}</h3>
+                                <p className="text-sm" style={{ color: 'rgba(249,245,238,0.65)' }}>{r.text}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ===== EXPLORE SRI LANKA ===== */}
+            <section className="py-20 md:py-24">
+                <div className="max-w-6xl mx-auto px-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
                         <div
                             className="md:order-2 rounded-md overflow-hidden"
                             style={{
-                                height: '420px',
+                                height: '520px',
                                 backgroundImage: 'url(/about-story-2.jpg)',
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center',
@@ -150,91 +197,50 @@ export default function AboutPage() {
                         />
                         <div className="md:order-1">
                             <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#B8963A', letterSpacing: '0.14em' }}>
-                                Our approach
+                                The island
                             </p>
                             <h2 className="font-display mt-3 mb-5" style={{ color: '#1A1712', fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', fontWeight: 400 }}>
-                                Slow travel, deep connection
+                                Explore Sri Lanka&apos;s Diverse Beauty
                             </h2>
-                            <p className="mb-4" style={{ color: '#5C4A2A' }}>
-                                We build itineraries around what most tours skip — a dawn with elephant mahouts, lunch in a
-                                family-run rice mill, a private audience with a temple guardian who has kept the flame lit for
-                                forty years.
+                            <p className="mb-6" style={{ color: '#5C4A2A' }}>
+                                Sri Lanka&apos;s nine distinct provinces each offer something extraordinary:
                             </p>
-                            <p style={{ color: '#5C4A2A' }}>
-                                Every partner lodge, every guide, every meal is chosen by someone who has been there personally —
-                                and returned.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* ===== VALUES ===== */}
-            <section className="py-20 md:py-24" style={{ backgroundColor: '#243D24' }}>
-                <div className="max-w-6xl mx-auto px-6">
-                    <div className="text-center mb-14">
-                        <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#D4AE5A', letterSpacing: '0.2em' }}>
-                            What guides us
-                        </p>
-                        <h2 className="font-display mt-4" style={{ color: '#F9F5EE', fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', fontWeight: 400 }}>
-                            The things we won&apos;t compromise on
-                        </h2>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {VALUES.map((v) => (
-                            <div
-                                key={v.title}
-                                className="text-center p-9"
-                                style={{ border: '1px solid rgba(212,174,90,0.25)', borderRadius: '8px' }}
-                            >
-                                <div
-                                    className="mx-auto mb-6 flex items-center justify-center"
-                                    style={{ width: '56px', height: '56px', borderRadius: '50%', backgroundColor: 'rgba(212,174,90,0.15)', color: '#D4AE5A' }}
-                                >
-                                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">{v.icon}</svg>
-                                </div>
-                                <h3 className="font-display text-2xl mb-3" style={{ color: '#F9F5EE' }}>{v.title}</h3>
-                                <p className="text-sm" style={{ color: 'rgba(249,245,238,0.65)' }}>{v.text}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* ===== STATS ===== */}
-            <section className="py-16" style={{ backgroundColor: '#EFE6D0' }}>
-                <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 text-center">
-                    {STATS.map((s) => (
-                        <div key={s.label}>
-                            <div className="font-display" style={{ color: '#B8963A', fontSize: '2.6rem', fontWeight: 400 }}>{s.value}</div>
-                            <div className="text-xs tracking-widest uppercase mt-1" style={{ color: '#5C4A2A', letterSpacing: '0.13em' }}>
-                                {s.label}
+                            <div className="space-y-5">
+                                {REGIONS.map((region) => (
+                                    <div key={region.title} className="pl-5" style={{ borderLeft: '2px solid #B8963A' }}>
+                                        <h3 className="font-display text-xl mb-1" style={{ color: '#1A1712' }}>{region.title}</h3>
+                                        <p className="text-sm" style={{ color: '#5C4A2A' }}>{region.text}</p>
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                    ))}
+                    </div>
                 </div>
             </section>
 
-            {/* ===== TRUST ===== */}
-            <section className="py-12 text-center" style={{ backgroundColor: '#EBF0E8' }}>
-                <div className="max-w-4xl mx-auto px-6">
-                    <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#B8963A', letterSpacing: '0.2em' }}>
-                        Registered &amp; protected
+            {/* ===== CTA ===== */}
+            <section className="py-20 md:py-24 text-center" style={{ backgroundColor: '#EFE6D0' }}>
+                <div className="max-w-3xl mx-auto px-6">
+                    <p style={{ color: '#5C4A2A' }}>
+                        Combined with the warm, smiling hospitality of the Sri Lankan people, we strive every day to use our
+                        local expertise to create seamless, adventure-filled holidays that leave you inspired and
+                        re-energized.
                     </p>
-                    <div className="flex flex-wrap justify-center gap-3 mt-5">
-                        {BADGES.map((b) => (
-                            <span
-                                key={b}
-                                className="text-xs font-semibold tracking-wider uppercase px-5 py-2.5"
-                                style={{ border: '1px solid rgba(184,150,58,0.2)', borderRadius: '25px', color: '#B8963A', letterSpacing: '0.08em' }}
-                            >
-                {b}
-              </span>
-                        ))}
-                    </div>
+                    <h2 className="font-display mt-10" style={{ color: '#1A1712', fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', fontWeight: 400 }}>
+                        Start Planning Your Dream Journey Today
+                    </h2>
+                    <p className="mt-3 text-2xl md:text-3xl" style={{ fontFamily: "'Caveat', cursive", color: '#B8963A' }}>
+                        Let us turn your travel dreams into unforgettable memories.
+                    </p>
+                    <a
+                        href="/contact"
+                        className="inline-flex items-center gap-2 mt-8 px-8 py-4 font-semibold uppercase transition-all duration-300 hover:opacity-90"
+                        style={{ borderRadius: '25px', backgroundColor: '#B8963A', color: '#F9F5EE', letterSpacing: '0.1em', fontSize: '0.78rem' }}
+                    >
+                        Plan My Journey
+                    </a>
                 </div>
             </section>
-
         </main>
     )
 }

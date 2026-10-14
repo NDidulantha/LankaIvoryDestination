@@ -15,13 +15,6 @@ const breadcrumb = breadcrumbJsonLd([
     { name: 'Postcards Home', path: '/experiences/postcards' },
 ])
 
-const STATS = [
-    { value: '4,200+', label: 'Travellers Guided' },
-    { value: '4.9 / 5', label: 'Average Rating' },
-    { value: '97%', label: 'Would Return' },
-    { value: '38', label: 'Countries Home To' },
-]
-
 export default function PostcardsPage() {
     return (
         <main style={{ backgroundColor: '#243D24' }}>
@@ -59,26 +52,6 @@ export default function PostcardsPage() {
                         <p className="mt-3 text-2xl md:text-3xl" style={{ fontFamily: "'Caveat', cursive", color: '#D4AE5A' }}>
                             notes our travellers sent from the island
                         </p>
-                    </div>
-
-                    {/* stats ribbon */}
-                    <div
-                        className="mt-14 flex flex-wrap justify-center gap-x-12 gap-y-8 py-8"
-                        style={{ borderTop: '1px solid rgba(212,174,90,0.25)', borderBottom: '1px solid rgba(212,174,90,0.25)' }}
-                    >
-                        {STATS.map((s) => (
-                            <div key={s.label} className="text-center">
-                                <div className="font-display text-3xl md:text-4xl" style={{ color: '#D4AE5A', fontWeight: 400 }}>
-                                    {s.value}
-                                </div>
-                                <div
-                                    className="text-xs tracking-widest uppercase mt-1.5"
-                                    style={{ color: 'rgba(249,245,238,0.55)', letterSpacing: '0.13em' }}
-                                >
-                                    {s.label}
-                                </div>
-                            </div>
-                        ))}
                     </div>
                 </div>
             </header>

@@ -103,8 +103,8 @@ export default function AboutPage() {
                         className="font-display italic mt-6"
                         style={{ color: '#B8963A', fontSize: 'clamp(1.6rem, 3.2vw, 2.3rem)', lineHeight: 1.35 }}
                     >
-                        Warm greetings from Lanka Ivory Destinations, your trusted travel partner based in Colombo—the
-                        last royal capital of Sri Lanka.
+                        Warm greetings from Lanka Ivory Destinations, your trusted travel partner based in Colombo, just
+                        a few hours from Kandy—the last royal capital of Sri Lanka.
                     </p>
                     <p className="mt-8" style={{ color: '#5C4A2A' }}>
                         Sri Lanka is an extraordinary island where golden sunlit beaches, mist-shrouded mountains, lush

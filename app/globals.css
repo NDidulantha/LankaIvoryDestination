@@ -20,9 +20,8 @@
   --font-serif-display: 'DM Serif Display', serif;
 }
 
-/* Google Translate widget — driven by our own language menu, so hide its default UI */
-.goog-te-banner-frame.skiptranslate,
-#google_translate_element {
+/* Google Translate injects a top banner iframe on translate; hide it and keep the page from jumping */
+.goog-te-banner-frame {
   display: none !important;
 }
 body {

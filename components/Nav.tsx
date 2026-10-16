@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import LanguageTranslator from '@/components/LanguageTranslator'
 
 type NavItem = {
     label: string
@@ -44,36 +45,12 @@ const NAV_ITEMS: NavItem[] = [
     { label: 'Contact', href: '/contact' },
 ]
 
-const LANGS = [
-    { code: 'EN', label: 'English', gCode: 'en' },
-    { code: 'FR', label: 'Français', gCode: 'fr' },
-    { code: 'DE', label: 'Deutsch', gCode: 'de' },
-    { code: 'ES', label: 'Español', gCode: 'es' },
-    { code: 'IT', label: 'Italiano', gCode: 'it' },
-    { code: 'NL', label: 'Nederlands', gCode: 'nl' },
-    { code: 'HI', label: 'हिन्दी', gCode: 'hi' },
-    { code: 'TA', label: 'தமிழ்', gCode: 'ta' },
-    { code: 'LA', label: 'Latina', gCode: 'la' },
-    { code: 'JA', label: '日本語', gCode: 'ja' },
-    { code: 'ZH', label: '中文', gCode: 'zh-CN' },
-]
-
-const GOOGLE_TRANSLATE_LANGS = LANGS.map(l => l.gCode).join(',')
-
-declare global {
-    interface Window {
-        googleTranslateElementInit?: () => void
-        google?: { translate: { TranslateElement: new (opts: Record<string, unknown>, el: string) => void } }
-    }
-}
-
 export default function Nav() {
     const [scrolled, setScrolled] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
     const [openDrop, setOpenDrop] = useState<string | null>(null)
     const [mobileDrop, setMobileDrop] = useState<string | null>(null)
     const [langOpen, setLangOpen] = useState(false)
-    const [lang, setLang] = useState('EN')
     const langRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -92,32 +69,6 @@ export default function Nav() {
         return () => document.removeEventListener('click', onDoc)
     }, [])
 
-    // Load Google's translate widget once, keep it hidden, and drive it from our own language menu
-    useEffect(() => {
-        if (document.getElementById('google-translate-script')) return
-        window.googleTranslateElementInit = () => {
-            new window.google!.translate.TranslateElement(
-                { pageLanguage: 'en', includedLanguages: GOOGLE_TRANSLATE_LANGS, autoDisplay: false },
-                'google_translate_element'
-            )
-        }
-        const script = document.createElement('script')
-        script.id = 'google-translate-script'
-        script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
-        script.async = true
-        document.body.appendChild(script)
-    }, [])
-
-    const translateTo = (gCode: string, attempts = 0) => {
-        const select = document.querySelector('.goog-te-combo') as HTMLSelectElement | null
-        if (select) {
-            select.value = gCode
-            select.dispatchEvent(new Event('change'))
-        } else if (attempts < 15) {
-            setTimeout(() => translateTo(gCode, attempts + 1), 300)
-        }
-    }
-
     const textColor = scrolled ? '#1A1712' : '#F9F5EE'
     // translucent panel: darker glass when nav is transparent (over hero), lighter glass when scrolled
     const panelBg = scrolled ? 'rgba(26,23,18,0.72)': 'rgba(26,23,18,0.6)'
@@ -133,7 +84,6 @@ export default function Nav() {
                 borderBottom: scrolled ? '1px solid rgba(36,61,36,0.15)' : 'none',
             }}
         >
-            <div id="google_translate_element" style={{ display: 'none' }} />
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
                 {/* Logo (left) */}
                 <Link href="/" className="flex items-center gap-3" aria-label="Lanka Ivory Destination home">
@@ -249,8 +199,13 @@ export default function Nav() {
                             }}
                             aria-haspopup="true"
                             aria-expanded={langOpen}
+                            aria-label="Translate page"
                         >
-                            {lang}
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" />
+                                <path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3z" stroke="currentColor" strokeWidth="1.5" />
+                            </svg>
+                            EN
                             <svg
                                 width="9"
                                 height="6"
@@ -262,40 +217,27 @@ export default function Nav() {
                                 <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.4" />
                             </svg>
                         </button>
-                        {langOpen && (
-                            <ul
-                                className="absolute right-0 mt-3 min-w-[160px] py-2 z-50 overflow-hidden"
-                                style={{
-                                    backgroundColor: panelBg,
-                                    backdropFilter: 'none',
-                                    WebkitBackdropFilter: 'none',
-                                    border: '1px solid ' + panelBorder,
-                                    borderRadius: '14px',
-                                    boxShadow: '0 18px 44px rgba(26,23,18,0.28)',
-                                }}
+                        {/* Kept mounted (just hidden) rather than conditionally rendered — Google's
+                            translate widget initialises once into this div and won't reappear
+                            if the div is removed and recreated. */}
+                        <div
+                            className="absolute right-0 mt-3 min-w-[190px] px-4 py-3 z-50"
+                            hidden={!langOpen}
+                            style={{
+                                backgroundColor: panelBg,
+                                border: '1px solid ' + panelBorder,
+                                borderRadius: '14px',
+                                boxShadow: '0 18px 44px rgba(26,23,18,0.28)',
+                            }}
+                        >
+                            <div
+                                className="mb-2 uppercase"
+                                style={{ color: itemColor, fontSize: '0.6rem', fontWeight: 600, letterSpacing: '0.16em', opacity: 0.7 }}
                             >
-                                {LANGS.map(l => (
-                                    <li key={l.code}>
-                                        <button
-                                            onClick={() => { setLang(l.code); setLangOpen(false); translateTo(l.gCode) }}
-                                            className="lid-drop-item w-full flex items-center justify-between gap-4 mx-2 px-4 py-2 text-left transition-all duration-200"
-                                            style={{
-                                                color: l.code === lang ? '#D4AE5A' : itemColor,
-                                                fontWeight: l.code === lang ? 600 : 400,
-                                                fontSize: '0.85rem',
-                                                borderRadius: '10px',
-                                                width: 'calc(100% - 1rem)',
-                                            }}
-                                        >
-                                            {l.label}
-                                            <span style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.14em', color: '#B8963A' }}>
-                        {l.code}
-                      </span>
-                                        </button>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
+                                Translate page
+                            </div>
+                            <LanguageTranslator />
+                        </div>
                     </div>
 
                     {/* CTA — desktop only */}
